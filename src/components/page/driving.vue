@@ -22,7 +22,7 @@
             p #[span.text-primary 答案：] {{item.answer}}
             p #[span.text-primary 解析：] {{item.explain}}
             p #[span.text-primary 知识点：] {{item.chapter}}
-        v-pagination.nav(v-if="drivingInfo&&drivingInfo.result.result", size="small", class=["text-center"], @change="loadPage", :total="drivingInfo.result.result.pagesize*10")
+        v-pagination.nav(v-if="drivingInfo&&drivingInfo.result.result", class=["text-center"], @change="loadPage", :total="drivingInfo.result.result.pagesize*10")
 
 </template>
 <script>

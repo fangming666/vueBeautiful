@@ -36,7 +36,7 @@
         this.init = true;
         this.$axios({
           method: "get",
-          url: `/api?qq=${this.num}`,
+          url: `${process.env.API_HOST}/api?qq=${this.num}`,
         }).then((res) => {
           if (res.status === 200) {
             if (res.data) {
@@ -44,12 +44,11 @@
               this.showDanger = false;
               let num1 = res.data.indexOf("(");
               let num2 = res.data.indexOf(")");
-              let resultData = JSON.parse(res.data.substring(num1 + 1, num2));
+              let resultData = eval(`(${res.data.substring(num1 + 1, num2)})`);
               for (let i in resultData) {
                 this.userName = resultData[i][6];
               }
-              this.imgSrc = `http://q1.qlogo.cn/headimg_dl?dst_uin=${this.num}&spec=100`
-              console.log(1,this.imgSrc);
+              this.imgSrc = `http://q1.qlogo.cn/headimg_dl?dst_uin=${this.num}&spec=100`;
             }else{
                this.showDanger = true;
                setTimeout(this.init = false,500);
