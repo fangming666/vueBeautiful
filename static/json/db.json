@@ -1,40 +1,45 @@
 {
   "data": [
     {
-      "img": "http://114.115.143.201/APIpage/imgs/weather01.png",
+      "img": "http://fm.xiaofany.com/APIpage/imgs/weather01.png",
       "text": "全国天气预报",
       "name": "weather"
     },
     {
-      "img": "http://114.115.143.201/APIpage/imgs/news01.png",
+      "img": "http://fm.xiaofany.com/APIpage/imgs/news01.png",
       "text": "新闻",
       "name": "news"
     },
     {
-      "img": "http://114.115.143.201/APIpage/imgs/menu01.png",
+      "img": "http://fm.xiaofany.com/APIpage/imgs/menu01.png",
       "text": "菜谱大全",
       "name": "menu"
     },
     {
-      "img": "http://114.115.143.201/APIpage/imgs/phone01.png",
+      "img": "http://fm.xiaofany.com/APIpage/imgs/phone01.png",
       "text": "手机归属地查询",
       "name": "phone"
     },
     {
-      "img": "http://114.115.143.201/APIpage/imgs/dri01.png",
+      "img": "http://fm.xiaofany.com/APIpage/imgs/dri01.png",
       "text": "驾考题库",
       "name": "driving"
     },
     {
-      "img": "http://114.115.143.201/APIpage/imgs/wzry.png",
+      "img": "http://fm.xiaofany.com/APIpage/imgs/wzry.png",
       "text": "王者助手",
       "name": "wzry",
       "imgType":true
     },
     {
-      "img": "http://114.115.143.201/APIpage/imgs/qq.png",
+      "img": "http://fm.xiaofany.com/APIpage/imgs/qq.png",
       "text": "qq昵称&头像",
       "name": "qq",
+      "imgType":true
+    },{
+      "img": "http://fm.xiaofany.com/APIpage/imgs/intension.png",
+      "text": "内涵段子",
+      "name": "intension",
       "imgType":true
     }
   ]

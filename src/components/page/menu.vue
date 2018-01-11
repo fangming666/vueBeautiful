@@ -25,7 +25,7 @@
         label: "菜名",
         disc:0,
         placeholder: "请输入您想搜索的菜名",
-        URLs: "http://114.115.143.201/APIpage/menu.php",
+        URLs: "http://fm.xiaofany.com/APIpage/menu.php",
         titleArr: ["名称", "简介", "时间", "分类", "食材", "步骤"],
       }
     },

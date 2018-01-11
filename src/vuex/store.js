@@ -19,10 +19,13 @@ const state = {
   menuInfo:"",
   phoneInfo:"",
   drivingInfo:"",
+  robotInfo:"",
+  intensionInfo:"",
   headTitle: "武器",
   titleArr: ["武器", "英雄"],
   heroData: hero.data,
   armsData: arms.data,
+  robotImg:"http://fm.xiaofany.com/APIpage/imgs/robot.png"
 };
 
 const mutations = {
@@ -46,6 +49,12 @@ const mutations = {
         break;
       case "driving":
         state.drivingInfo = list.data;
+        break;
+      case "robot":
+        state.robotInfo = list.data;
+        break;
+      case "intension":
+        state.intensionInfo = list.data;
         break;
     }
     console.log(200,list.data);

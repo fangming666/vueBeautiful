@@ -31,7 +31,7 @@
   export default{
     data(){
       return {
-        urlS: "http://114.115.143.201/APIpage/driving.php",
+        urlS: "http://fm.xiaofany.com/APIpage/driving.php",
         pages: 0,
         info: "",
         optionsOne: [{

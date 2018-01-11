@@ -21,7 +21,7 @@
         label: "手机号",
         disc:0,
         placeholder: "请输入需要查询的手机号",
-        URLs: "http://114.115.143.201/APIpage/phone.php",
+        URLs: "http://fm.xiaofany.com/APIpage/phone.php",
         titleArr: ["手机号码", "归属地", "运营商", "卡类型"]
       }
     },

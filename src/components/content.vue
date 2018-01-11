@@ -8,14 +8,18 @@
       li.pull-left(v-for="item in data", @click="openRouter(item.name,item.text)")
         img(:src="item.img", :class="item.imgType?'imgOne':'imgTwo'")
         p {{item.text}}
-      div.mascot
+      div.mascot(@click="handle(true)", v-show="!visible" )
+      v-modal(:visible="visible", )
+        robot(@hideR="handRo")
 </template>
 <script>
+  import robot from "./robotS.vue";
   import {mapState} from "vuex";
   export default{
     data(){
       return {
-        imgArr: ["http://114.115.143.201/APIpage/imgs/weather.jpg","http://114.115.143.201/APIpage/imgs/wzry.jpg","http://114.115.143.201/APIpage/imgs/menu.jpg"]
+        visible: false,
+        imgArr: ["http://fm.xiaofany.com/APIpage/imgs/weather.jpg", "http://fm.xiaofany.com/APIpage/imgs/wzry.jpg", "http://fm.xiaofany.com/APIpage/imgs/menu.jpg"]
       }
     },
     computed: {
@@ -24,10 +28,19 @@
     methods: {
       openRouter(name, title){
         this.$router.push({path: `/${name}/${title}`})
+      },
+      handle(result){
+        this.visible = result;
+      },
+      handRo(){
+        this.visible = false;
       }
     },
     created(){
 //        console.log(this.data)
+    },
+    components: {
+      robot
     }
 
   }

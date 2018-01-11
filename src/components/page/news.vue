@@ -24,8 +24,8 @@
   export default{
     data(){
       return {
-        urlOne: "http://114.115.143.201/APIpage/news_one.php",
-        urlTwo: "http://114.115.143.201/APIpage/news_two.php",
+        urlOne: "http://fm.xiaofany.com/APIpage/news_one.php",
+        urlTwo: "http://fm.xiaofany.com/APIpage/news_two.php",
         navArr: [],
         num: 0
       }

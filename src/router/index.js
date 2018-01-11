@@ -10,6 +10,7 @@ const qq = () => import("./../components/page/qq.vue");
 const wzry = () => import("./../components/page/wzry/wzry.vue");
 const hero = () => import('./../components/page/wzry/hero.vue');
 const arms = () => import("./../components/page/wzry/arms.vue");
+const intension = () => import("./../components/page/intension.vue");
 Vue.use(Router);
 
 export default new Router({
@@ -23,6 +24,11 @@ export default new Router({
       path: "/weather/:title",
       name: "weather",
       component: weather,
+      props: true
+    }, {
+      path: "/intension/:title",
+      name: "intension",
+      component: intension,
       props: true
     }, {
       path: "/news/:title",

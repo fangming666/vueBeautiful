@@ -21,7 +21,7 @@
         label: "城市",
         disc:0,
         placeholder: "请输入需要查询的城市",
-        URLs: "http://114.115.143.201/APIpage/weather.php",
+        URLs: "http://fm.xiaofany.com/APIpage/weather.php",
         titleArr: ["城市", "天气", "最高温度", "风向", "风速", "AQI指数", "臭氧一小时平均", "空气质量", "对健康的影响", "更新时间", "最低温度"]
       }
     },
