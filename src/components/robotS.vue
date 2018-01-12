@@ -32,33 +32,32 @@
     methods: {
       ...mapActions(["ajaxOpenS"]),
       send(){
-        this.robotArr.push({"text":this.data1,"other":false});
+        this.robotArr.push({"text": this.data1, "other": false});
         let params = {};
         params.name = `robot=${this.data1}`;
         params.url = this.urlS;
         params.type = this.typeS;
-        this.ajaxOpenS(params);
-        if (this.robotInfo.result) {
-          this.scroll = new BScroll(this.$refs.robotContent,{});
-            setTimeout(() => {
-              this.robotArr.push({"text":this.robotInfo.result.text,"other":true});
-              this.$nextTick(() => {
-                  let itemArr = jquery(".robot-item");
-                  for (let i = 0; i < itemArr.length; i++) {
-                    let topS = "";
-                    if (i > 0) {
-                      topS = Number.parseFloat(itemArr.eq(i - 1).css("height")) + Number.parseFloat(itemArr.eq(i - 1).css("top")) + 10;
-                      itemArr.eq(i).css("top", topS);
-                    }
+        this.ajaxOpenS(params).then(() => {
+          this.scroll = new BScroll(this.$refs.robotContent, {});
+          this.robotArr.push({"text": this.robotInfo.result.text, "other": true});
+          (this.$nextTick(() => {
+              let itemArr = jquery(".robot-item");
+              for (let i = 0; i < itemArr.length; i++) {
+                let topS = "";
+                if (i > 0) {
+                  topS = Number.parseFloat(itemArr.eq(i - 1).css("height")) + Number.parseFloat(itemArr.eq(i - 1).css("top")) + 10;
+                  itemArr.eq(i).css("top", topS);
+                  console.log(topS, jquery(".robot-content").eq(0).css("height").split("px")[0]);
+                  if (topS >= jquery(".robot-content").eq(0).css("height").split("px")[0]) {
+                    jquery(".robot-content").eq(0).find("ul").css("height", topS + Number.parseFloat(itemArr.eq(i).css("height")) + 30 + "px");
                   }
-                  this.robotInfo.result.text = "";
-                  this.data1 = "";
-                }, 500
-              )
-
-            })
-
-        }
+                }
+              }
+              this.robotInfo.result.text = "";
+              this.data1 = "";
+            }
+          ))(this);
+        });
       },
       hideRobot(){
         this.$emit("hideR")

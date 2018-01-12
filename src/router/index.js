@@ -11,6 +11,7 @@ const wzry = () => import("./../components/page/wzry/wzry.vue");
 const hero = () => import('./../components/page/wzry/hero.vue');
 const arms = () => import("./../components/page/wzry/arms.vue");
 const intension = () => import("./../components/page/intension.vue");
+const test = () => import("./../components/page/test.vue");
 Vue.use(Router);
 
 export default new Router({
@@ -20,6 +21,10 @@ export default new Router({
       path: '/',
       name: 'content',
       component: content
+    },  {
+      path: '/test',
+      name: 'test',
+      component: test
     }, {
       path: "/weather/:title",
       name: "weather",

@@ -3,6 +3,7 @@
  */
 import vue from "vue";
 import vueX from "vuex";
+import axios from "axios";
 import * as actions from "./action";
 import * as data from "../../static/json/db.json";
 import * as hero from "./../../static/json/hero.json"
@@ -13,6 +14,7 @@ vue.use(vueX);
 const state = {
   data: data.data,
   loading:"",
+  loadings:"",
   cityInfo: "",
   newOneInfo:"",
   newTwoInfo:"",
@@ -21,6 +23,7 @@ const state = {
   drivingInfo:"",
   robotInfo:"",
   intensionInfo:"",
+  spinning:"",
   headTitle: "武器",
   titleArr: ["武器", "英雄"],
   heroData: hero.data,
@@ -29,6 +32,27 @@ const state = {
 };
 
 const mutations = {
+  LOADING(start){
+    axios.interceptors.request.use(function(config){    //在请求发送之前做一些事，比如说 设置loading动画显示
+      start.loadings = "loading";
+      start.spinning = true;
+      return config;
+    },function(error){
+      return Promise.reject(error);
+    });
+//添加一个返回拦截器
+    axios.interceptors.response.use(function(response){
+      //对返回的数据进行一些处理，比如说把loading动画关掉
+      start.loadings = "success";
+      start.spinning = false;
+      // setTimeout(start.loadings = "",100);
+      return response
+    },function(error){
+      //对返回的错误进行一些处理
+      start.loadings = "fail";
+      // setTimeout(start.loadings = "",100);
+    });
+  },
   POST_AXIOS(state, list){
     state.loading = "success";
     switch(list.type){
@@ -61,7 +85,7 @@ const mutations = {
   },
   ERROR(){
     state.loading = "fail";
-    alert("获取数据失败");
+    // alert("获取数据失败");
   },
 
   TITLEINFO(state, index) {

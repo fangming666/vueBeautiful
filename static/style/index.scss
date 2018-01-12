@@ -580,6 +580,29 @@
     margin-right: 1rem;
   }
 }
+.mint-loadmore-top{
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+.intensionLoading{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  .ant-spin{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate3D(-50%,-50%,0);
+    z-index: 1000;
+  }
+  &.loading{
+    background-color: rgba(0,0,0,0.1);
+  }
+}
 .intension-content{
  .user{
    img{
@@ -621,4 +644,24 @@
   right: 2rem;
   bottom: 2rem;
   background-color: #B498E2!important;
+}
+.top-load-wrapper {
+  line-height: 50px;
+  text-align: center;
+}
+.icon-arrow {
+  transition: .2s;
+  transform: rotate(180deg);
+}
+.icon-loading {
+  transform: rotate(0deg);
+  animation-name: loading;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+@keyframes loading
+{
+  from {transform: rotate(0deg);}
+  to {transform: rotate(360deg);}
 }

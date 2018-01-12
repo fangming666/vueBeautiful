@@ -36,7 +36,7 @@
         this.init = true;
         this.$axios({
           method: "get",
-          url: `${process.env.API_HOST}/api?qq=${this.num}`,
+          url: `${process.env.API_HOST}?qq=${this.num}`,
         }).then((res) => {
           if (res.status === 200) {
             if (res.data) {

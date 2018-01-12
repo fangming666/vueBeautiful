@@ -1,21 +1,24 @@
 <template lang="pug">
   transition(name="move-left")
-    div.news
-      headS(:title="title")
-      div.content(ref="nav")
-        div.nav-warp
-          ul
-            li(v-for="(item,index) in navArr", @click="openNew(index)", :class="resultNum===index?'active':''" ref="newsList") {{item}}
-        div.newsInfo(ref="contentS", v-if="newTwoInfo")
-          div(v-if="newTwoInfo.result.result")
-            h6.text-center {{newTwoInfo.result.result.channel}}
-            dl(v-for="item in newTwoInfo.result.result.list")
-              dt {{item.title}}
-              dd(v-html="item.content")
-              dd   --{{item.src}}
-              dd   时间：{{item.time}}
-          div(v-else)
-            p.text-danger(class=["text-center"]) 系统繁忙，请重新刷新
+    div
+      div.intensionLoading(v-if="loadings == 'loading'", class=["loading"])
+        v-spin(size="large")
+      div.news
+        headS(:title="title")
+        div.content(ref="nav")
+          div.nav-warp
+            ul
+              li(v-for="(item,index) in navArr", @click="openNew(index)", :class="resultNum===index?'active':''" ref="newsList") {{item}}
+          div.newsInfo(ref="contentS", v-if="newTwoInfo")
+            div(v-if="newTwoInfo.result.result")
+              h6.text-center {{newTwoInfo.result.result.channel}}
+              dl(v-for="item in newTwoInfo.result.result.list")
+                dt {{item.title}}
+                dd(v-html="item.content")
+                dd   --{{item.src}}
+                dd   时间：{{item.time}}
+            div(v-else)
+              p.text-danger(class=["text-center"]) 系统繁忙，请重新刷新
 </template>
 <script>
   import BScroll from 'better-scroll';
@@ -35,13 +38,13 @@
       headS
     },
     computed: {
-      ...mapState(["newOneInfo", "newTwoInfo"]),
+      ...mapState(["newOneInfo", "newTwoInfo", "loadings"]),
       resultNum(){
-          return this.num
+        return this.num
       }
     },
     methods: {
-      ...mapActions(["ajaxOpenS"]),
+      ...mapActions(["ajaxOpenS", "loading"]),
       result(){
         let params = {};
         params.url = this.urlOne;
@@ -69,27 +72,26 @@
         params.url = that.urlTwo;
         params.name = "channel=头条";
         params.type = "newsTwo";
-        that.ajaxOpenS(params);
-        this.$nextTick(() => {
-          setTimeout(() => {
+        that.ajaxOpenS(params).then(() => {
+          this.$nextTick(() => {
             this.scroll = new BScroll(this.$refs.contentS, {})
-          }, 1000);
-
+          })
         });
-
       }
-    },
-    created(){
-      this.infoInit();
-      this.$nextTick(() => {
-        setTimeout(() => {
-          if (this.newOneInfo.result) {
-            this.navArr = this.newOneInfo.result.result;
-          }
-        }, 500)
-      });
+  },
+  created()
+  {
+    this.loading();
+    this.infoInit();
+    this.$nextTick(() => {
+      setTimeout(() => {
+        if (this.newOneInfo.result) {
+          this.navArr = this.newOneInfo.result.result;
+        }
+      }, 500)
+    });
 
 
-    }
+  }
   }
 </script>
