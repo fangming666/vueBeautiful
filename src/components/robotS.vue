@@ -2,7 +2,7 @@
   div.robot
     div.robot-head(class=["text-center", "text-primary"])
       img(:src="robotImg")
-      span 小小蜜
+      span 大头
       i.text-error(class=["fa fa-close"], @click="hideRobot")
     div.robot-content(ref="robotContent")
       ul(ref="robotChat")

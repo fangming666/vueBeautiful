@@ -14,6 +14,20 @@ export const ajaxOpenS = function ({commit}, page) {
   });
 };
 
+export const ajaxOpenS2 = async ({commit}, page) => {
+  let list = {};
+  list.type = page.type;
+  let dataS = await server._postAxios2(page.url, page.name);
+  try {
+    list.data = dataS.data;
+    commit("POST_AXIOS", list);
+  } catch (e) {
+    commit("ERROR")
+  }
+  return dataS;
+};
+
+
 export const loading = function ({commit}) {
   commit("LOADING")
 };

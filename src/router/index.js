@@ -12,6 +12,8 @@ const hero = () => import('./../components/page/wzry/hero.vue');
 const arms = () => import("./../components/page/wzry/arms.vue");
 const intension = () => import("./../components/page/intension.vue");
 const test = () => import("./../components/page/test.vue");
+const historyS = () => import("./../components/page/historyS.vue");
+const file = () =>import("./../components/file.vue");
 Vue.use(Router);
 
 export default new Router({
@@ -25,6 +27,11 @@ export default new Router({
       path: '/test',
       name: 'test',
       component: test
+    },  {
+      path: '/file/:title',
+      name: 'file',
+      component: file,
+      props: true
     }, {
       path: "/weather/:title",
       name: "weather",
@@ -63,11 +70,23 @@ export default new Router({
       props: true
     },
     {
+      path: "/historyS/:title",
+      name: "historyS",
+      component: historyS,
+      props: true
+    },
+    {
       path: "/wzry/:title",
       name: "wzry",
       component: wzry,
       props:true,
       children:[
+        {
+          path: '/wzry/:title',
+          name: 'arms',
+          component: arms,
+          props: true
+        },
         {
           path: '/wzry/arms/:title2',
           name: 'arms',

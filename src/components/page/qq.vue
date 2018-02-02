@@ -12,6 +12,9 @@
       p.qq-item(v-else, v-show="userName") #[span 昵称:] {{userName}}
       p.qq-item(v-show="userName&&!showDanger") #[span 头像:]
         img(:src="imgSrc")
+      p.qq-item(v-show="userName&&!showDanger") #[span 空间头像:]
+        img(:src="cloneImg")
+
 </template>
 <script>
   import vue from "vue";
@@ -24,9 +27,11 @@
         placeholder: "请输入QQ号",
         userName: "",
         imgSrc: "",
+        cloneImg:"",
         num: "",
         init: false,
         loading: "",
+        showImg:"",
         showDanger:false
       }
     },
@@ -49,6 +54,7 @@
                 this.userName = resultData[i][6];
               }
               this.imgSrc = `http://q1.qlogo.cn/headimg_dl?dst_uin=${this.num}&spec=100`;
+              this.cloneImg = `http://qlogo3.store.qq.com/qzone/${this.num}/${this.num}/100`;
             }else{
                this.showDanger = true;
                setTimeout(this.init = false,500);

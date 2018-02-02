@@ -10,7 +10,7 @@
             span {{item2}}:
             span(v-html="contentArr[index][index2]")
             img(:src="item.pic", v-if="index2 ===0")
-        v-pagination(v-if="menuInfo&&menuInfo.result.result", v-model="value", @change="loadPage", :total="menuInfo.result.result.num*10")
+        v-pagination(v-if="menuInfo&&menuInfo.result.result",  size="small",  v-model="value", @change="loadPage", :total="menuInfo.result.result.num*10")
 
 </template>
 <script>

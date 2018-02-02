@@ -33,3 +33,25 @@ export const _postAxios = function (url, params) {
   }
 
 };
+
+
+export const _postAxios2 = async (url, params) => {
+    if (params) {
+      let data = await axios({
+        method: "post",
+        url: url,
+        data: params,
+        timeout: 5000,
+        responseType: 'json'
+      });
+      try{
+        return data;
+      }catch(e){
+        return Promise.reject(new Error);
+      }
+
+    }
+  }
+;
+
+

@@ -36,7 +36,6 @@
         titles: "",
         http: "http://fm.xiaofany.com/APIpage/read.php?link=",
         infoArr: [],
-        goShow: false,
         topStatus: ''
       }
     },
@@ -61,13 +60,13 @@
             this.intensionInfo.data.data.map((item, index) => {
               this.infoArr.unshift(item)
             });
+            this.infoArr = this.infoArr.slice(0, 50)
           }
           (this)
         });
 
       },
       handleTopChange(status) {
-        console.log(10,status);
         this.topStatus = status;
       },
       loadTop() {

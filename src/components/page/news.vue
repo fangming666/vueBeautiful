@@ -44,7 +44,7 @@
       }
     },
     methods: {
-      ...mapActions(["ajaxOpenS", "loading"]),
+      ...mapActions(["ajaxOpenS", "loading","ajaxOpenS2"]),
       result(){
         let params = {};
         params.url = this.urlOne;
@@ -72,7 +72,7 @@
         params.url = that.urlTwo;
         params.name = "channel=头条";
         params.type = "newsTwo";
-        that.ajaxOpenS(params).then(() => {
+        that.ajaxOpenS2(params).then(() => {
           this.$nextTick(() => {
             this.scroll = new BScroll(this.$refs.contentS, {})
           })

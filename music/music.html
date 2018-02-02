@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>音乐播放器</title>
+  <style>
+    .myMusic {
+      display: block;
+      width: 55px;
+      height: 55px;
+      border-radius: 100%;
+      position: relative;
+    }
+
+    .myMusic:after {
+      display: block;
+      content: '\f001';
+      width: 55px;
+      height: 55px;
+      font-family: 'FontIcon';
+      text-align: center;
+      font-size: 25px;
+      line-height: 55px;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .myMusic .circle {
+      display: block;
+      width: 50px;
+      height: 50px;
+      border-radius: 100%;
+      border: 5px solid rgba(0, 0, 0, 0);
+      border-top-color: #78dc1e;
+      border-bottom-color: #78dc1e;
+      position: absolute;
+      left: 0;
+      box-shadow: 0 0 35px #6ffe11;
+    }
+
+    .play {
+      -webkit-animation: Circle 1s ease-in-out infinite;
+      animation: Circle 1s ease-in-out infinite;
+    }
+
+    .pause {
+      -webkit-animation-play-state: paused;
+      animation-play-state: paused;
+    }
+
+    @-webkit-keyframes Circle {
+      from {
+        -webkit-transform: rotate(0deg);
+      }
+      to {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+
+    @keyframes Circle {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+<input type="text" spellcheck="value">
+<a class="myMusic" title="让我们荡起双桨">
+  <span class="circle play"></span>
+</a>
+</body>
+<script>
+  var musicSrc = 'http://yinyueshiting.baidu.com/data2/music/134379562/10494647255600128.mp3?xcode=f9439132fa6a4fdb3143226ac1c6712284958927e6b1be18';
+  var audio = null;
+  function setAudio(){
+    audio = document.createElement('audio');
+    audio.src = musicSrc;
+    if(!audio){
+      audio.load(); //加载音乐
+    }else{
+      audio.play();
+      audio.loop = true; //循环播放
+    }
+  }
+  var musicBtn  = $('.myMusic');
+  var $music = musicBtn.find('.circle');
+  //控制
+  musicBtn.off().on('click',function(){
+    if($music.hasClass('play')){ //如果已经播放，则暂停
+      audio && (audio.pause());
+      $music.addClass('pause').removeClass('play');
+    }else{
+      audio && (audio.play());
+      $music.addClass('play').removeClass('pause');
+    }
+  });
+  //页面加载后执行
+  window.onload = function(){
+    setAudio();
+  }
+</script>
+</html>

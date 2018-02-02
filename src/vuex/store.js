@@ -23,6 +23,7 @@ const state = {
   drivingInfo:"",
   robotInfo:"",
   intensionInfo:"",
+  historySInfo:"",
   spinning:"",
   headTitle: "武器",
   titleArr: ["武器", "英雄"],
@@ -80,12 +81,15 @@ const mutations = {
       case "intension":
         state.intensionInfo = list.data;
         break;
+      case "historyS":
+        state.historySInfo = list.data;
+        break;
     }
     console.log(200,list.data);
   },
   ERROR(){
     state.loading = "fail";
-    // alert("获取数据失败");
+    alert("获取数据失败");
   },
 
   TITLEINFO(state, index) {

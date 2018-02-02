@@ -17,15 +17,14 @@
         menuArr :[]
       }
     },
-    props: ["label", "placeholder", "type", "urlS","disc","valS2","type2"],
+    props: ["label", "placeholder", "type", "urlS","disc","type2"],
     computed: {
       ...mapState(["loading"])
     },
     methods: {
-      ...mapActions(["ajaxOpenS"]),
+      ...mapActions(["ajaxOpenS","ajaxOpenS2"]),
       result(){
         this.init = true;
-        console.log(this.valS2);
         let params = {};
         if(!this.desc){
           params.name =  `${this.type}=${this.valS}`;
@@ -36,7 +35,7 @@
         params.type = this.type;
         setTimeout(
           function () {
-            this.ajaxOpenS(params);
+            this.ajaxOpenS2(params);
             this.init = false;
           }.bind(this), 1000);
 

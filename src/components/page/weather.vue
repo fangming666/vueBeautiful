@@ -32,6 +32,7 @@
     },
     computed: {
       ...mapState(["cityInfo"]),
+
       contentArr(){
         let arr = [];
         if (this.cityInfo) {

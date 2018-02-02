@@ -12,6 +12,7 @@
   "dependencies": {
     "jquery": "^3.2.1",
     "mint-ui": "^2.2.13",
+    "mui": "^0.0.1",
     "vue": "^2.5.2",
     "vue-beauty": "^2.0.0-beta.9",
     "vue-pull-to": "^0.1.6",
